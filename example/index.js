@@ -14,6 +14,7 @@ const port = process.env.PORT || 3000;
 
 const Account = require('./account');
 const settings = require('./settings');
+const accounts = require('./accounts.json');
 
 const issuer = process.env.ISSUER || 'http://localhost:3000';
 
@@ -96,6 +97,11 @@ provider.initialize({
       });
     }
 
+    yield next;
+  });
+
+  router.get('/.well-known/predefined-claims', function* renderPredefinedClaims(next) {
+    this.body = accounts;
     yield next;
   });
 
