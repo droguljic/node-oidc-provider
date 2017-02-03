@@ -2,7 +2,14 @@
 
 const store = new Map();
 const logins = new Map();
+const claims = new Map();
 const uuid = require('uuid');
+const accounts = require('./accounts.json');
+
+function getRandomly(source) {
+  const rnd = Math.floor(Math.random() * (20 - 0)) + 0;
+  return Array.from(source.keys()).find((key, idx) => idx === rnd);
+}
 
 class Account {
   constructor(id) {
@@ -11,43 +18,16 @@ class Account {
   }
 
   claims() {
-    return {
-      address: {
-        country: '000',
-        formatted: '000',
-        locality: '000',
-        postal_code: '000',
-        region: '000',
-        street_address: '000',
-      },
-      birthdate: '1987-10-16',
-      email: 'johndoe@example.com',
-      email_verified: false,
-      family_name: 'Doe',
-      gender: 'male',
-      given_name: 'John',
-      locale: 'en-US',
-      middle_name: 'Middle',
-      name: 'John Doe',
-      nickname: 'Johny',
-      phone_number: '+49 000 000000',
-      phone_number_verified: false,
-      picture: 'http://lorempixel.com/400/200/',
-      preferred_username: 'Jdawg',
-      profile: 'https://johnswebsite.com',
-      sub: this.accountId,
-      updated_at: 1454704946,
-      website: 'http://example.com',
-      zoneinfo: 'Europe/Berlin',
-    };
+    return claims.get(this.accountId);
   }
 
   static findByLogin(login) {
-    if (!logins.get(login)) {
-      logins.set(login, new Account());
+    let username = logins.has(login) ? login : null;
+    if (!username) {
+      username = getRandomly(logins);
     }
 
-    return Promise.resolve(logins.get(login));
+    return Promise.resolve(logins.get(username));
   }
 
   static findById(id) {
@@ -55,5 +35,14 @@ class Account {
     return Promise.resolve(store.get(id));
   }
 }
+
+(() => {
+  accounts.forEach((account) => {
+    const instance = new Account(account.sub);
+    store.set(account.sub, instance);
+    logins.set(account.preferred_username, instance);
+    claims.set(account.sub, account);
+  });
+})();
 
 module.exports = Account;
