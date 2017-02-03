@@ -45,10 +45,17 @@ module.exports.config = {
 };
 
 module.exports.clients = [{
-  client_id: 'oidcCLIENT',
-  client_secret: '91c0fabd17a9db3cfe53f28a10728e39b7724e234ecd78dba1fb05b909fb4ed98c476afc50a634d52808ad3cb2ea744bc8c3b45b7149ec459b5c416a6e8db242',
+  application_type: 'native',
+  client_id: '249751-ld.oidcCLIENT',
+  client_secret: 'bD8oDCdgrFRxvqDYcUZChI2gYdC5J4nnOZCZJ8yle6U',
   grant_types: ['client_credentials', 'refresh_token', 'authorization_code'],
-  redirect_uris: ['http://sso-client.dev/providers/7/open_id', 'http://sso-client.dev/providers/8/open_id'],
+  redirect_uris: ['http://localhost:9000/auth/idp/callback'],
+}, {
+  application_type: 'native',
+  client_id: '996412-rc.oidcCLIENT',
+  client_secret: 'l2HNIR7awq5vcdkvJc2vSQ57PJTTGjxQVBOiG34Qbv8',
+  grant_types: ['client_credentials', 'refresh_token', 'authorization_code'],
+  redirect_uris: ['http://localhost:4000/_oauth/oidc'],
 }];
 
 module.exports.certificates = [{
