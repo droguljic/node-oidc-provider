@@ -46,16 +46,25 @@ module.exports.config = {
 
 module.exports.clients = [{
   application_type: 'native',
-  client_id: '249751-ld.oidcCLIENT',
-  client_secret: 'bD8oDCdgrFRxvqDYcUZChI2gYdC5J4nnOZCZJ8yle6U',
+  client_id: '792720288-ldn.oidcCLIENT',
+  client_secret: 'KQnmWfvuAiuG74gtsDmnkNObwuNVuQPfwVk9HA7oTpI',
   grant_types: ['client_credentials', 'refresh_token', 'authorization_code'],
   redirect_uris: ['http://localhost:9000/auth/idp/callback'],
 }, {
   application_type: 'native',
-  client_id: '996412-rc.oidcCLIENT',
-  client_secret: 'l2HNIR7awq5vcdkvJc2vSQ57PJTTGjxQVBOiG34Qbv8',
+  client_id: '3831846241-rcn.oidcCLIENT',
+  client_secret: 'CWA1UkSM4CI4cQONNjB4SEt8UtgHL1jEaQoT4MOYILc',
   grant_types: ['client_credentials', 'refresh_token', 'authorization_code'],
   redirect_uris: ['http://localhost:4000/_oauth/oidc'],
+}, {
+  application_type: 'web',
+  client_id: '2210325909-ldw.oidcCLIENT',
+  client_secret: '7AIWGbQVzUoxYbnnaZxjwkI0TqOH9D3qkDkhBwqs2ZA',
+  grant_types: ['client_credentials', 'refresh_token', 'authorization_code'],
+  redirect_uris: [
+    'http://ec2-54-204-177-22.compute-1.amazonaws.com:8080/auth/idp/callback',
+    'http://10.20.255.240/auth/idp/callback',
+  ],
 }];
 
 module.exports.certificates = [{
