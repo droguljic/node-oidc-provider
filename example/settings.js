@@ -52,10 +52,10 @@ module.exports.clients = [{
   redirect_uris: ['http://localhost:9000/auth/idp/callback'],
 }, {
   application_type: 'native',
-  client_id: '3831846241-rcn.oidcCLIENT',
+  client_id: '3831846241-mpn.oidcCLIENT',
   client_secret: 'CWA1UkSM4CI4cQONNjB4SEt8UtgHL1jEaQoT4MOYILc',
-  grant_types: ['client_credentials', 'refresh_token', 'authorization_code'],
-  redirect_uris: ['http://localhost:4000/_oauth/oidc'],
+  grant_types: ['authorization_code'],
+  redirect_uris: ['http://localhost:11000/auth/oidc/complete'],
 }, {
   application_type: 'web',
   client_id: '2210325909-ldw.oidcCLIENT',
@@ -64,6 +64,8 @@ module.exports.clients = [{
   redirect_uris: [
     'http://ec2-54-204-177-22.compute-1.amazonaws.com:8080/auth/idp/callback',
     'http://10.20.255.240/auth/idp/callback',
+    'http://10.20.254.245/auth/idp/callback',
+    'http://10.20.254.16/auth/idp/callback',
   ],
 }];
 
